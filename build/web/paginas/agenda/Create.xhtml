@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAgendaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAgendaLabel_idagenda}" for="idagenda" />
+                    <h:inputText id="idagenda" value="#{agendaController.selected.idagenda}" title="#{bundle.CreateAgendaTitle_idagenda}" required="true" requiredMessage="#{bundle.CreateAgendaRequiredMessage_idagenda}"/>
+                    <h:outputLabel value="#{bundle.CreateAgendaLabel_data}" for="data" />
+                    <h:inputText id="data" value="#{agendaController.selected.data}" title="#{bundle.CreateAgendaTitle_data}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAgendaLabel_observacao}" for="observacao" />
+                    <h:inputText id="observacao" value="#{agendaController.selected.observacao}" title="#{bundle.CreateAgendaTitle_observacao}" />
+                    <h:outputLabel value="#{bundle.CreateAgendaLabel_idpaciente}" for="idpaciente" />
+                    <h:selectOneMenu id="idpaciente" value="#{agendaController.selected.idpaciente}" title="#{bundle.CreateAgendaTitle_idpaciente}" required="true" requiredMessage="#{bundle.CreateAgendaRequiredMessage_idpaciente}">
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{agendaController.create}" value="#{bundle.CreateAgendaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{agendaController.prepareList}" value="#{bundle.CreateAgendaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAgendaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

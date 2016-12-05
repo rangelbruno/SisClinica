@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAgendaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAgendaLabel_idagenda}"/>
+                    <h:outputText value="#{agendaController.selected.idagenda}" title="#{bundle.ViewAgendaTitle_idagenda}"/>
+                    <h:outputText value="#{bundle.ViewAgendaLabel_data}"/>
+                    <h:outputText value="#{agendaController.selected.data}" title="#{bundle.ViewAgendaTitle_data}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAgendaLabel_observacao}"/>
+                    <h:outputText value="#{agendaController.selected.observacao}" title="#{bundle.ViewAgendaTitle_observacao}"/>
+                    <h:outputText value="#{bundle.ViewAgendaLabel_idpaciente}"/>
+                    <h:outputText value="#{agendaController.selected.idpaciente}" title="#{bundle.ViewAgendaTitle_idpaciente}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{agendaController.destroyAndView}" value="#{bundle.ViewAgendaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAgendaEditLink}"/>
+                <br />
+                <h:commandLink action="#{agendaController.prepareCreate}" value="#{bundle.ViewAgendaCreateLink}" />
+                <br />
+                <h:commandLink action="#{agendaController.prepareList}" value="#{bundle.ViewAgendaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAgendaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

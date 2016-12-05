@@ -1,0 +1,136 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="content">                        
+        <h1 class="page-header "> <i class="fa fa-plus"></i> SisClinica</h1>
+
+        <!--/.row-->
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-blue panel-widget ">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <img src="resources/images/computer.png" />
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">
+                            <b style="color: #4da6ff;">
+                            <h:outputText value="#{consultaController.pagination.pageLastItem + 1}"/>
+                            </b>
+                        </div>
+                        <div class="text-muted"><b style="color: #4da6ff;">Agendados</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-orange panel-widget ">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <img src="resources/images/computer.png" />
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">
+                            <b style="color: #ffb31a;">
+                        <h:outputText value="#{medicoController.pagination.itemsCount}"/>
+                            </b>
+                        </div>
+                        <div class="text-muted"><b style="color: #ffb31a;">Médicos</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-teal panel-widget ">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <img src="resources/images/computer.png" />
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">
+                            <b style="color: #00b386;">
+                                <h:outputText value="#{pacienteController.pagination.itemsCount}"/>
+                            </b>
+                        </div>
+                        <div class="text-muted"><b style="color: #00b386;">Pacientes</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-red panel-widget ">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <img src="resources/images/computer.png" />
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">
+                            <b style="color: #ff3300;">
+                        <h:outputText value="#{usuarioController.pagination.itemsCount}"/>
+                            </b>
+                        </div>
+                        <div class="text-muted"><b style="color: #ff3300;">Usuários</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/Acesso Rápido-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><i class="glyphicon glyphicon-th"></i> Acesso rápido</div>
+                </div>
+            </div>
+        </div><!--/.row-->
+        <!--/Agenda-->
+        <div class="row">
+            
+            <!--/Consulta-->
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4><h:link outcome="paginas/consulta/List" value="Agenda" style="color: #4da6ff;"/></h4>
+                        <div class="easypiechart"><a href="faces/paginas/consulta/List.xhtml"><img src="resources/images/calendar.png" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Médico-->
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4><h:link outcome="paginas/medico/List" value="Médico" style="color: #ffb31a;"/></h4>
+                        <div class="easypiechart"><a href="faces/paginas/medico/List.xhtml"><img src="resources/images/doctor.png" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Paciente-->
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4><h:link outcome="paginas/paciente/List" value="Paciente" style="color: #00b386;"/></h4>
+                        <div class="easypiechart"><a href="faces/paginas/paciente/List.xhtml"><img src="resources/images/pacientes.png" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Usuário-->
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4><h:link outcome="paginas/usuario/List" value="Usuário" style="color: #ff3300;"/></h4>
+                        <div class="easypiechart"><a href="faces/paginas/usuario/List.xhtml"><img src="resources/images/user.png" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </ui:define>
+</ui:composition> 

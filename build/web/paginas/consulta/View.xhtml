@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:composition template="/templates/default/main.xhtml">
+        <ui:define name="content">
+            <h:outputText value="#{bundle.ViewConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h1 class="page-header "> <i class="fa fa-calendar"></i> Agenda</h1>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2" styleClass="table table-hover">
+                    <h:outputText value="ID:"/>
+                    <h:outputText value="#{consultaController.selected.idconsulta}" title="#{bundle.ViewConsultaTitle_idconsulta}"/>
+                    
+                    <h:outputText value="#{bundle.ViewConsultaLabel_data}"/>
+                    <h:outputText value="#{consultaController.selected.data}" title="#{bundle.ViewConsultaTitle_data}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="#{bundle.ViewConsultaLabel_procedimento}"/>
+                    <h:outputText value="#{consultaController.selected.procedimento}" title="#{bundle.ViewConsultaTitle_procedimento}"/>
+                    
+                    <h:outputText value="Paciente:"/>
+                    <h:outputText value="#{consultaController.selected.idpaciente.nome}" title="#{bundle.ViewConsultaTitle_idpaciente}"/>
+                    
+                    <h:outputText value="Médico:"/>
+                    <h:outputText value="#{consultaController.selected.idMedico.nome}" title="#{bundle.ViewConsultaTitle_idMedico}"/>
+                    
+                   
+                </h:panelGrid>
+                 <br />
+                <h:commandLink action="#{consultaController.destroyAndView}" value="Cancelar" styleClass="btn btn-danger"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="Editar" styleClass="btn btn-info"/>
+                <br />
+                <br />
+                <h:commandLink action="#{consultaController.prepareList}" value="Voltar" styleClass="btn btn-warning"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

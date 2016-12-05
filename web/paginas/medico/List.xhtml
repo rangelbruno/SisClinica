@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:composition template="/templates/default/main.xhtml">
+        <ui:define name="content">
+            <h:outputText value="#{bundle.ListMedicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h1 class="page-header "> <i class="glyphicon glyphicon-user"></i> Médicos</h1>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMedicoEmpty}" rendered="#{medicoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{medicoController.items.rowCount > 0}">
+                    <h:outputText value="#{medicoController.pagination.pageFirstItem + 1}..#{medicoController.pagination.pageLastItem + 1}/#{medicoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{medicoController.previous}" value="#{bundle.Previous} #{medicoController.pagination.pageSize}" rendered="#{medicoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{medicoController.next}" value="#{bundle.Next} #{medicoController.pagination.pageSize}" rendered="#{medicoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{medicoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" styleClass="table table-bordered" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMedico}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nome" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CPF" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cpf}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CRM" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.crm}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="UF" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.uf}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Especialidade" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.especialidade}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Ação" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:commandLink action="#{medicoController.prepareView}" value="Exibir" styleClass="btn btn-info"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{medicoController.prepareEdit}" value="Editar" styleClass="btn btn-warning"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{medicoController.destroy}" value="Excluir" styleClass="btn btn-danger"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                 <br />
+                <h:commandLink action="#{medicoController.prepareCreate}" value="Novo Médico" styleClass="btn btn-success"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

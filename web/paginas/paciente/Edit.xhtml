@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition template="/templates/default/main.xhtml">
+        <ui:define name="content">
+            <h:outputText value="#{bundle.EditPacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h1 class="page-header "> <i class="glyphicon glyphicon-user"></i> Pacientes</h1>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="ID:" for="idpaciente" style="margin-bottom: 15px;"/>
+                    <h:inputText id="idpaciente" value="#{pacienteController.selected.idpaciente}" title="#{bundle.EditPacienteTitle_idpaciente}" disabled="true" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_nome}" for="nome" style="margin-bottom: 15px;"/>
+                    <h:inputText id="nome" value="#{pacienteController.selected.nome}" title="#{bundle.EditPacienteTitle_nome}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="CPF:" for="cpf" style="margin-bottom: 15px;"/>
+                    <p:inputMask id="cpf" value="#{pacienteController.selected.cpf}" title="#{bundle.CreatePacienteTitle_cpf}" mask="999.999.999-99" styleClass="form-control" style="margin-bottom: 15px;" />
+                    
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_pai}" for="pai" style="margin-bottom: 15px;"/>
+                    <h:inputText id="pai" value="#{pacienteController.selected.pai}" title="#{bundle.EditPacienteTitle_pai}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_mae}" for="mae" style="margin-bottom: 15px;"/>
+                    <h:inputText id="mae" value="#{pacienteController.selected.mae}" title="#{bundle.EditPacienteTitle_mae}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="CNS:" for="cns" style="margin-bottom: 15px;"/>
+                    <h:inputText id="cns" value="#{pacienteController.selected.cns}" title="#{bundle.EditPacienteTitle_cns}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_operadora}" for="operadora" style="margin-bottom: 15px;"/>
+                    <h:inputText id="operadora" value="#{pacienteController.selected.operadora}" title="#{bundle.EditPacienteTitle_operadora}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="N° do Cartão:" for="ncartao" style="margin-bottom: 15px;"/>
+                    <h:inputText id="ncartao" value="#{pacienteController.selected.ncartao}" title="#{bundle.EditPacienteTitle_ncartao}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_nascimento}" for="nascimento" style="margin-bottom: 15px;"/>
+                    <p:inputMask id="idade" value="#{pacienteController.selected.nascimento}" title="#{bundle.CreatePacienteTitle_nascimento}" mask="99/99/9999" styleClass="form-control" style="margin-bottom: 15px;">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputMask>
+                    
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_nacionalidade}" for="nacionalidade" style="margin-bottom: 15px;"/>
+                    <h:inputText id="nacionalidade" value="#{pacienteController.selected.nacionalidade}" title="#{bundle.EditPacienteTitle_nacionalidade}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_naturalidade}" for="naturalidade" style="margin-bottom: 15px;"/>
+                    <h:inputText id="naturalidade" value="#{pacienteController.selected.naturalidade}" title="#{bundle.EditPacienteTitle_naturalidade}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                   
+                    <h:outputLabel value="Sexo:" for="sexo" style="margin-bottom: 15px;"/>
+                    <h:selectOneMenu value="#{pacienteController.selected.sexo}" styleClass="form-control" style="margin-bottom: 15px;"> 
+                            <f:selectItem itemValue="Masculino" itemLabel="Masculino" />
+                            <f:selectItem itemValue="Feminino" itemLabel="Feminino" />
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_rua}" for="rua" style="margin-bottom: 15px;"/>
+                    <h:inputText id="rua" value="#{pacienteController.selected.rua}" title="#{bundle.EditPacienteTitle_rua}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_cep}" for="cep" style="margin-bottom: 15px;"/>
+                    <p:inputMask id="cep" value="#{pacienteController.selected.cep}" title="#{bundle.CreatePacienteTitle_cep}" mask="99999-999" styleClass="form-control" style="margin-bottom: 15px;" />
+                    
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_cidade}" for="cidade" style="margin-bottom: 15px;"/>
+                    <h:inputText id="cidade" value="#{pacienteController.selected.cidade}" title="#{bundle.EditPacienteTitle_cidade}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                     <h:outputLabel value="#{bundle.CreatePacienteLabel_estado}" for="estado" style="margin-bottom: 15px;"/>
+                    <h:selectOneMenu value="#{pacienteController.selected.estado}" styleClass="form-control" style="margin-bottom: 15px;">
+                            <f:selectItem itemValue="---" itemLabel="---" />    
+                            <f:selectItem itemValue="AC" itemLabel="AC" />
+                            <f:selectItem itemValue="AL" itemLabel="AL" />
+                            <f:selectItem itemValue="AP" itemLabel="AP" />
+                            <f:selectItem itemValue="AM" itemLabel="AM" />
+                            <f:selectItem itemValue="BA" itemLabel="BA" />
+                            <f:selectItem itemValue="CE" itemLabel="CE" />
+                            <f:selectItem itemValue="DF" itemLabel="DF" />
+                            <f:selectItem itemValue="ES" itemLabel="ES" />
+                            <f:selectItem itemValue="GO" itemLabel="GO" />
+                            <f:selectItem itemValue="MA" itemLabel="MA" />
+                            <f:selectItem itemValue="MT" itemLabel="MT" />
+                            <f:selectItem itemValue="MS" itemLabel="MS" />
+                            <f:selectItem itemValue="MG" itemLabel="MG" />
+                            <f:selectItem itemValue="PA" itemLabel="PA" />
+                            <f:selectItem itemValue="PB" itemLabel="PB" />
+                            <f:selectItem itemValue="PR" itemLabel="PR" />
+                            <f:selectItem itemValue="PE" itemLabel="PE" />
+                            <f:selectItem itemValue="PI" itemLabel="PI" />
+                            <f:selectItem itemValue="RJ" itemLabel="RJ" />
+                            <f:selectItem itemValue="RN" itemLabel="RN" />
+                            <f:selectItem itemValue="RS" itemLabel="RS" />
+                            <f:selectItem itemValue="RO" itemLabel="RO" />
+                            <f:selectItem itemValue="RR" itemLabel="RR" />
+                            <f:selectItem itemValue="SC" itemLabel="SC" />
+                            <f:selectItem itemValue="SP" itemLabel="SP" />
+                            <f:selectItem itemValue="SE" itemLabel="SE" />
+                            <f:selectItem itemValue="TO" itemLabel="TO" />
+                    </h:selectOneMenu>
+                                       
+                     <h:outputLabel value="#{bundle.CreatePacienteLabel_telefone}" for="telefone" style="margin-bottom: 15px;"/>
+                    <p:inputMask id="telefone" value="#{pacienteController.selected.telefone}" title="#{bundle.CreatePacienteTitle_telefone}" mask="(99) 9 9999-9999" styleClass="form-control" style="margin-bottom: 15px;" />
+                     
+                </h:panelGrid>
+                 <h:commandLink action="#{pacienteController.update}" value="Salvar" styleClass="btn btn-success"/>
+                <br />
+                <br />
+                <h:commandLink action="#{pacienteController.prepareList}" value="Voltar" immediate="true" styleClass="btn btn-warning"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition template="/templates/default/main.xhtml">
+        <ui:define name="content">
+            <h:outputText value="#{bundle.EditConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h1 class="page-header "> <i class="fa fa-calendar"></i> Agenda</h1>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="ID:" for="idconsulta" style="margin-bottom: 15px;"/>
+                    <h:inputText id="idconsulta" value="#{consultaController.selected.idconsulta}" title="#{bundle.EditConsultaTitle_idconsulta}" disabled="true" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_data}" for="data" style="margin-bottom: 15px;"/>
+                    <p:inputMask id="data" value="#{consultaController.selected.data}" title="#{bundle.CreateConsultaTitle_data}" mask="99/99/9999" styleClass="form-control" style="margin-bottom: 15px;">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </p:inputMask>
+                    
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_procedimento}" for="procedimento" style="margin-bottom: 15px;"/>
+                    <h:inputText id="procedimento" value="#{consultaController.selected.procedimento}" title="#{bundle.EditConsultaTitle_procedimento}" required="true" requiredMessage="#{bundle.EditConsultaRequiredMessage_procedimento}" styleClass="form-control" style="margin-bottom: 15px;"/>
+                    
+                    <h:outputLabel value="Paciente:" for="idpaciente" style="margin-bottom: 15px;"/>
+                    <h:selectOneMenu id="idpaciente" value="#{consultaController.selected.idpaciente}" title="#{bundle.EditConsultaTitle_idpaciente}" required="true" requiredMessage="#{bundle.EditConsultaRequiredMessage_idpaciente}" styleClass="form-control" style="margin-bottom: 15px;">
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="Médico:" for="idMedico" style="margin-bottom: 15px;"/>
+                    <h:selectOneMenu id="idMedico" value="#{consultaController.selected.idMedico}" title="#{bundle.EditConsultaTitle_idMedico}" required="true" requiredMessage="#{bundle.EditConsultaRequiredMessage_idMedico}" styleClass="form-control" style="margin-bottom: 15px;">
+                        <f:selectItems value="#{medicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                        
+                </h:panelGrid>
+                <h:commandLink action="#{consultaController.update}" value="Salvar" styleClass="btn btn-success"/>
+                <br />
+                <br />
+                <h:commandLink action="#{consultaController.prepareList}" value="Voltar" immediate="true" styleClass="btn btn-warning"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

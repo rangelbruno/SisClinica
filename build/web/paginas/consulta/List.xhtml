@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:composition template="/templates/default/main.xhtml">
+        <ui:define name="content">
+            <h:outputText value="#{bundle.ListConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h1 class="page-header "> <i class="fa fa-calendar"></i> Agenda</h1>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListConsultaEmpty}" rendered="#{consultaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{consultaController.items.rowCount > 0}">
+                    <h:outputText value="#{consultaController.pagination.pageFirstItem + 1}..#{consultaController.pagination.pageLastItem + 1}/#{consultaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{consultaController.previous}" value="#{bundle.Previous} #{consultaController.pagination.pageSize}" rendered="#{consultaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{consultaController.next}" value="#{bundle.Next} #{consultaController.pagination.pageSize}" rendered="#{consultaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{consultaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" styleClass="table table-bordered" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID:" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idconsulta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_data}" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.data}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_procedimento}" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.procedimento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Paciente" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpaciente.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Médico" style="padding-left: 8px;"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMedico.nome}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Ação" style="padding-left: 8px;"/>
+                            </f:facet>
+                             <h:commandLink action="#{consultaController.prepareView}" value="Exibir" styleClass="btn btn-info"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{consultaController.prepareEdit}" value="Editar" styleClass="btn btn-warning"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{consultaController.destroy}" value="Cancelar" styleClass="btn btn-danger"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{consultaController.prepareCreate}" value="Nova Agenda" styleClass="btn btn-success"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

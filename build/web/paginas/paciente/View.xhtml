@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:composition template="/templates/default/main.xhtml">
+        <ui:define name="content">
+            <h:outputText value="#{bundle.ViewPacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h1 class="page-header "> <i class="glyphicon glyphicon-user"></i> Pacientes</h1>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2" styleClass="table table-hover">
+                    <h:outputText value="ID:"/>
+                    <h:outputText value="#{pacienteController.selected.idpaciente}" title="#{bundle.ViewPacienteTitle_idpaciente}"/>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_nome}"/>
+                    <h:outputText value="#{pacienteController.selected.nome}" title="#{bundle.ViewPacienteTitle_nome}"/>
+                    
+                    <h:outputText value="CPF:"/>
+                    <h:outputText value="#{pacienteController.selected.cpf}" title="#{bundle.ViewPacienteTitle_cpf}"/>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_pai}"/>
+                    <h:outputText value="#{pacienteController.selected.pai}" title="#{bundle.ViewPacienteTitle_pai}"/>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_mae}"/>
+                    <h:outputText value="#{pacienteController.selected.mae}" title="#{bundle.ViewPacienteTitle_mae}"/>
+                    
+                    <h:outputText value="CNS:"/>
+                    <h:outputText value="#{pacienteController.selected.cns}" title="#{bundle.ViewPacienteTitle_cns}"/>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_operadora}"/>
+                    <h:outputText value="#{pacienteController.selected.operadora}" title="#{bundle.ViewPacienteTitle_operadora}"/>
+                    
+                    <h:outputText value="N° do Cartão:"/>
+                    <h:outputText value="#{pacienteController.selected.ncartao}" title="#{bundle.ViewPacienteTitle_ncartao}"/>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_nascimento}"/>
+                    <h:outputText value="#{pacienteController.selected.nascimento}" title="#{bundle.ViewPacienteTitle_nascimento}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_nacionalidade}"/>
+                    <h:outputText value="#{pacienteController.selected.nacionalidade}" title="#{bundle.ViewPacienteTitle_nacionalidade}"/>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_naturalidade}"/>
+                    <h:outputText value="#{pacienteController.selected.naturalidade}" title="#{bundle.ViewPacienteTitle_naturalidade}"/>
+                    
+                    <h:outputText value="Sexo:"/>
+                    <h:outputText value="#{pacienteController.selected.sexo}" title="#{bundle.ViewPacienteTitle_sexo}"/>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_rua}"/>
+                    <h:outputText value="#{pacienteController.selected.rua}" title="#{bundle.ViewPacienteTitle_rua}"/>
+                    
+                    <h:outputText value="CEP:"/>
+                    <h:outputText value="#{pacienteController.selected.cep}" title="#{bundle.ViewPacienteTitle_cep}"/>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_cidade}"/>
+                    <h:outputText value="#{pacienteController.selected.cidade}" title="#{bundle.ViewPacienteTitle_cidade}"/>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_estado}"/>
+                    <h:outputText value="#{pacienteController.selected.estado}" title="#{bundle.ViewPacienteTitle_estado}"/>
+                    
+                    <h:outputText value="#{bundle.ViewPacienteLabel_telefone}"/>
+                    <h:outputText value="#{pacienteController.selected.telefone}" title="#{bundle.ViewPacienteTitle_telefone}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pacienteController.destroyAndView}" value="Excluir" styleClass="btn btn-danger"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="Editar" styleClass="btn btn-info"/>
+                <br />
+                <br />
+                <h:commandLink action="#{pacienteController.prepareList}" value="Voltar" styleClass="btn btn-warning"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
